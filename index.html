@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+		*{padding:0;margin:0;}
+		.container{width:100%;height:612px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	<script src="keyframes.js"></script>
+	<script>
+		window.onload = function(){
+			var count = 0;
+			var imgArr = [];
+			for(var i=1;i<=32;i++){
+				var img = new Image();
+				img.src = 'http://img10.cdn.grazia.com.cn/statics/campaign/pb2017aw/images/201/'+i+'.jpg';
+				imgArr.push(img);
+				img.onload = function(){
+					count++;
+					if(count==32){
+						keyFrames(imgArr);
+					}
+				}
+
+			}
+		}
+		var keyFrames;
+		function keyFrames(imgArr){
+			keyFrames = new KeyFrames(document.querySelector('.container'), 'array', imgArr, {
+				fps:10,
+				width:375,
+				height:612
+			});
+		}
+	</script>
+</body>
+</html>
