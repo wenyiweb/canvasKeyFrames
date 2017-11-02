@@ -13,22 +13,31 @@
 	<div class="container">
 		
 	</div>
-	<script src="keyframes.js"></script>
+	<script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script>
+	<script src="../../src/keyframes.js"></script>
 	<script>
+		// 初始化vConsole
+		window.vConsole = new window.VConsole();
+		console.info('欢迎使用 vConsole。可用于展示 console 日志，方便开发、调试。');
+		
 		window.onload = function(){
 			var count = 0;
 			var imgArr = [];
 			for(var i=1;i<=32;i++){
-				var img = new Image();
-				img.src = 'http://img10.cdn.grazia.com.cn/statics/campaign/pb2017aw/images/201/'+i+'.jpg';
-				imgArr.push(img);
-				img.onload = function(){
-					count++;
-					if(count==32){
-						keyFrames(imgArr);
+				(function(i){
+					var img = new Image();
+					img.onload = function(){
+						img.onload = null;
+						count++;
+						imgArr.push(img);
+						if(count==32){
+							keyFrames(imgArr);
+						}
 					}
-				}
-
+					img.onerror = function(){
+					}
+					img.src = 'imgs/'+i+'.jpg';
+				})(i);
 			}
 		}
 		var keyFrames;
@@ -38,6 +47,7 @@
 				width:375,
 				height:612
 			});
+			keyFrames.play();
 		}
 	</script>
 </body>

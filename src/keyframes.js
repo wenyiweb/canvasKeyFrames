@@ -58,7 +58,6 @@
         this.recordTo = null;
         //记录循环方式
         this.recordInf = this.options.loop;
-
         init(this);
     }
     /**
@@ -66,7 +65,6 @@
      */
     function init(self) {
         createCanvas(self);
-
         if (self.mode === 'array') {
             self.imgsLen = self.imgs.length;
         } else if (self.mode === 'sprite') {
@@ -105,7 +103,7 @@
                 self.ctx.drawImage(self.imgs[n], 0, 0, self.canvas.width, self.canvas.height);
             }
         } else if (self.mode === 'sprite') {
-            var imgWidth = self.imgs.width / imgsLen;
+            var imgWidth = self.imgs.width / self.imgsLen;
             self.ctx.drawImage(self.imgs, imgWidth * n, 0, imgWidth, self.imgs.height, 0, 0, self.canvas.width, self.canvas.height);
         } else {
             throw new Error('没有匹配的模式')

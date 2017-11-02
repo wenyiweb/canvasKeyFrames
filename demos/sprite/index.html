@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+		*{padding:0;margin:0;}
+		.container{width:210px;height:210px;margin:0 auto;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+	<script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script>
+	<script src="../../src/keyframes.js"></script>
+	<script>
+		// 初始化vConsole
+		window.vConsole = new window.VConsole();
+		console.info('欢迎使用 vConsole。可用于展示 console 日志，方便开发、调试。');
+		
+		var keyFrames;
+		function keyFrames(img){
+			keyFrames = new KeyFrames(document.querySelector('.container'), 'sprite', img, {
+				fps:10,
+				width:210,
+				height:210,
+				ratio:1
+			});
+			keyFrames.play();
+		}
+
+		(function(){
+			var img = new Image();
+			img.onload = function(){
+				img.onload = null;
+				keyFrames(img);
+			}
+			img.onerror = function(){
+			}
+			img.src = 'img/1.png';
+		})();
+		
+	</script>
+</body>
+</html>
