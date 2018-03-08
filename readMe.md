@@ -78,7 +78,8 @@ callback [回调函数]
 ##### play() 从当前位置播放动画，会继承上次使用fromTo、form或to的属性
 ##### destroy() 销毁对象
 
-## 前端学习交流群，QQ群 ![](https://github.com/wenyiweb/vuejs-fujun/blob/master/static/imgs/qq.png)
+## 前端学习交流群，QQ群 
+## ![](https://github.com/wenyiweb/vuejs-fujun/blob/master/static/imgs/qq.png)
 
 ## License
 
