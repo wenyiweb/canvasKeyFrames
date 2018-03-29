@@ -46,7 +46,7 @@ your html
 * npm
 
 ```bash
-npm i canvas-keyframes --save
+npm i canvaskeyframes
 ```
 
 your app.js
