@@ -14,7 +14,7 @@
 		
 	</div>
 	<script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script>
-	<script src="../../src/keyframes.js"></script>
+	<script src="../../src/canvas-keyframes.min.js"></script>
 	<script>
 		// 初始化vConsole
 		window.vConsole = new window.VConsole();
@@ -42,7 +42,7 @@
 		}
 		var keyFrames;
 		function keyFrames(imgArr){
-			keyFrames = new KeyFrames(document.querySelector('.container'), 'array', imgArr, {
+			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'array', imgArr, {
 				fps:10,
 				width:375,
 				height:612
