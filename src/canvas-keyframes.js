@@ -1,7 +1,7 @@
 !(function() {
     'use strict';
     /**
-	 * [KeyFrames 序列帧播放工具]
+	 * [CanvasKeyFrames 序列帧播放工具]
 	 * el      [canvas容器,必须是DOM对象]
 	 * type    [图片模式，'array'和 'sprite'模式，array是图片对象数组，sprite是基于宽度扩展的单张雪碧图]
 	 * imgs    [图片帧对象数组或单图，对应不同模式]
@@ -14,7 +14,7 @@
 			    height: 300
                	}
 	 */
-    function KeyFrames(el, type, imgs, options) {
+    function CanvasKeyFrames(el, type, imgs, options) {
         if (!el || !imgs) {
             throw new Error('el和imgs是必填参数')
         }
@@ -117,8 +117,8 @@
      * API
      * @type {Object}
      */
-    KeyFrames.prototype = {
-        constructor: KeyFrames,
+    CanvasKeyFrames.prototype = {
+        constructor: CanvasKeyFrames,
         /**
          * 跳到某一帧
          */
@@ -362,15 +362,15 @@
     // Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
     if (typeof define === 'function' && define.amd) {
         define([], function() {
-            return { KeyFrames: KeyFrames }
+            return { CanvasKeyFrames: CanvasKeyFrames }
         })
     }
     //Add support form CommonJS libraries such as browserify.
     if (typeof exports !== 'undefined') {
-        exports.KeyFrames = KeyFrames;
+        exports.CanvasKeyFrames = CanvasKeyFrames;
     }
     //Define globally in case AMD is not available or unused
     if (typeof window !== 'undefined') {
-        window.KeyFrames = KeyFrames;
+        window.CanvasKeyFrames = CanvasKeyFrames;
     }
 })();

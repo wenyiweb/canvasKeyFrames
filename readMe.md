@@ -1,5 +1,5 @@
 
-# keyframes
+# CanvasKeyFrames
 
 图片序列帧播放工具,用canvas操作图片动画，封装了常用方法。
 
@@ -18,7 +18,7 @@
 
 ## API
 
-### KeyFrames(el, type, imgs, options)
+### CanvasKeyFrames(el, type, imgs, options)
 
 - `el` canvas容器,必须是DOM对象
 - `type` 图片模式，'array'和 'sprite'模式，array是图片对象数组，sprite是基于宽度扩展的单张雪碧图
@@ -31,9 +31,33 @@
   - `width` 隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度
   - `height` 隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度
 
-### 调用方式
-- `导入JS`
-- `var kf = new KeyFrames(el, type, imgs, options)`
+
+### Install
+
+* base
+
+your html
+
+```html
+<script src="canvas-keyframes.js"></script>
+
+```
+
+* npm
+
+```bash
+npm i canvas-keyframes --save
+```
+
+your app.js
+
+```javascript
+
+import CanvasKeyFrames from 'canvas-keyframes'
+
+```
+
+
 ### 方法介绍 
 
 ##### goto(n) 跳转到某一帧

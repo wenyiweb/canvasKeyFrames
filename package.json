@@ -1,0 +1,24 @@
+{
+  "name": "canvaskeyframes",
+  "version": "0.1.0",
+  "description": "The simplest sequence frame animation plugin of canvas .",
+  "main": "./src/canvas-keyframes.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wenyiweb/canvasKeyFrames.git"
+  },
+  "keywords": [
+    "canvas",
+    "animation",
+    "keyframe"
+  ],
+  "author": "kevin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wenyiweb/canvasKeyFrames/issues"
+  },
+  "homepage": "https://github.com/wenyiweb/canvasKeyFrames#readme"
+}
