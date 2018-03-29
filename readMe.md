@@ -53,7 +53,7 @@ your app.js
 
 ```javascript
 
-import CanvasKeyFrames from 'canvas-keyframes'
+import CanvasKeyFrames from 'canvaskeyframes'
 
 ```
 
