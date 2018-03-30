@@ -1,3 +1,6 @@
+# CanvasKeyFrames - HTML5 Canvas 图片序列帧播放工具[![npm][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] 
+
+[English Version](./readeMe_EN.md)
 
 # CanvasKeyFrames
 
@@ -107,4 +110,12 @@ callback [回调函数]
 
 ## License
 
-MIT
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+
+
+
+[travis-image]: https://api.travis-ci.org/wenyiweb/canvasKeyFrames.svg?branch=master
+[travis-url]: https://travis-ci.org/wenyiweb/canvasKeyFrames
+
+[npm-image]: https://img.shields.io/npm/v/canvaskeyframes.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/canvaskeyframes
