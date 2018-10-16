@@ -6,14 +6,14 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<style>
 		*{padding:0;margin:0;}
-		.container{width:210px;height:210px;margin:0 auto;}
+		.container{width:400px;height:200px;margin:0 auto;}
 	</style>
 </head>
 <body>
 	<div class="container">
 		
 	</div>
-	<script src="http://wechatfe.github.io/vconsole/lib/vconsole.min.js?v=3.0.0.0"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.2.0/vconsole.min.js"></script>
 	<script src="../../src/canvas-keyframes.min.js"></script>
 	<script>
 		// 初始化vConsole
@@ -24,8 +24,8 @@
 		function keyFrames(img){
 			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'sprite', img, {
 				fps:10,
-				width:210,
-				height:210,
+				width:600,
+				height:300,
 				ratio:1
 			});
 			keyFrames.play();
@@ -39,7 +39,7 @@
 			}
 			img.onerror = function(){
 			}
-			img.src = 'img/1.png';
+			img.src = 'img/2.png';
 		})();
 		
 	</script>
