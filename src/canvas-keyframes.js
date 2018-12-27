@@ -362,7 +362,7 @@
     // Add support for AMD (Asynchronous Module Definition) libraries such as require.js.
     if (typeof define === 'function' && define.amd) {
         define([], function() {
-            return { CanvasKeyFrames: CanvasKeyFrames }
+            return CanvasKeyFrames;
         })
     }
     //Add support form CommonJS libraries such as browserify.

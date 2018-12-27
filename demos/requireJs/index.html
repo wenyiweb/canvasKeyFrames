@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style>
+		*{padding:0;margin:0;}
+		.container{width:100%;height:612px;}
+	</style>
+</head>
+<body>
+	<div class="container">
+		
+	</div>
+    <script src="https://cdn.bootcss.com/require.js/2.3.6/require.min.js"></script>
+    <script>
+        require.config({
+            baseUrl: '../../src/',
+            paths: {
+                canvasKeyFrames: 'canvas-keyframes'
+            }
+        });
+    </script>
+    <script>
+    require(['canvasKeyFrames'], function( CanvasKeyFrames ) {
+        console.log( CanvasKeyFrames ) // OK
+        var count = 0;
+        var imgArr = [];
+        for(var i=1;i<=32;i++){
+            (function(i){
+                var img = new Image();
+                img.onload = function(){
+                    img.onload = null;
+                    count++;
+                    // 有可能图片加载有快有满慢，所以用角标存
+                    imgArr[i-1] = img;
+                    if(count==32){
+                        keyFrames(imgArr);
+                    }
+                }
+                img.onerror = function(){
+                }
+                img.src = '../imgarr/imgs/'+i+'.jpg';
+            })(i);
+        }
+        var keyFrames;
+		function keyFrames(imgArr){
+			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'array', imgArr, {
+				fps:10,
+				width:375,
+				height:612
+			});
+			keyFrames.play();
+		}
+    });
+    </script>
+</body>
+</html>
