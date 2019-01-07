@@ -23,12 +23,12 @@
 		var keyFrames;
 		function keyFrames(img){
 			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'sprite', img, {
-				fps:10,
+				fps:20,
 				width:600,
 				height:300,
-                _iw: 202,
-                _ih: 158,
-                framesCount: 6
+                _iw: 300,
+                _ih: 300,
+                framesCount: 16
 			});
 			keyFrames.play();
 		}
@@ -41,7 +41,7 @@
 			}
 			img.onerror = function(){
 			}
-			img.src = 'img/1.png';
+			img.src = 'imgs/1.jpg';
 		})();
 		
 	</script>

@@ -1,4 +1,4 @@
-!(function() {
+;(function() {
     'use strict';
     /**
 	 * [CanvasKeyFrames 序列帧播放工具]
@@ -11,8 +11,11 @@
 			    loop: 10 //初始化默认的循环数，在formTo中可以设置，默认是infinite,
 			    ratio: 2 //雪碧图模式才需要，图片的高清比例，与@2x相似，默认是2，低清模式是1,
 			    width: 300, //注意，隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度
-			    height: 300
-               	}
+                height: 300,
+                _iw: 300, // 雪碧图中单个图片的宽度
+                _ih: 300, // 雪碧图中单个图片的高度
+                framesCount: 14 // 雪碧图帧数
+            }
 	 */
     function CanvasKeyFrames(el, type, imgs, options) {
         if (!el || !imgs) {
@@ -43,7 +46,7 @@
             cover: 0,
             fps: 24,
             loop: 'infinite',
-            ratio: 2
+            ratio: 1
         }
         this.options = options || defaultoptions;
         this.options.cover = options.cover || defaultoptions.cover;
@@ -69,7 +72,9 @@
             self.imgsLen = self.imgs.length;
         } else if (self.mode === 'sprite') {
             //计算雪碧图数量
-            self.imgsLen = Math.round(2 * self.imgs.width / (self.canvas.width * self.options.ratio))
+            self.wt = self.imgs.width / self.options._iw;
+            self.ht = self.imgs.height / self.options._ih;
+            self.imgsLen = self.options.framesCount ? self.options.framesCount : Math.round(2 * self.imgs.width / (self.canvas.width * self.options.ratio))
         }
 
         self.recordTo = self.imgsLen - 1;
@@ -104,7 +109,14 @@
             }
         } else if (self.mode === 'sprite') {
             var imgWidth = self.imgs.width / self.imgsLen;
-            self.ctx.drawImage(self.imgs, imgWidth * n, 0, imgWidth, self.imgs.height, 0, 0, self.canvas.width, self.canvas.height);
+            if (self.options.framesCount) {
+                var wc = self.wt == 1 ? 0 : (Math.floor(n / self.wt) <= 0 ? n : (n / self.wt == 1 ? 0 : (n - self.wt * Math.floor(n / self.wt))));
+                var hc = self.ht == 1 ? 0 : (Math.floor(n / self.ht) <= 0 ? 0 : Math.floor(n / self.ht));
+                self.ctx.drawImage(self.imgs, self.options._iw * wc, self.options._ih * hc, self.options._iw, self.options._iw, 0, 0, self.canvas.width, self.canvas.height);
+            } else {
+                var imgWidth = self.imgs.width / self.imgsLen;
+                self.ctx.drawImage(self.imgs, imgWidth * n, 0, imgWidth, self.imgs.height, 0, 0, self.canvas.width, self.canvas.height);
+            }
         } else {
             throw new Error('没有匹配的模式')
         }

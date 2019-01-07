@@ -1,6 +1,6 @@
 {
   "name": "canvaskeyframes",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "The simplest sequence frame animation plugin of canvas .",
   "main": "./src/canvas-keyframes.js",
   "scripts": {

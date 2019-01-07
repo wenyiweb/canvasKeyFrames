@@ -14,9 +14,11 @@ The simplest sequence frame animation plugin of canvas,Manipulating picture anim
 				cover: 10, //Specify the cover frame, default is 0 \
 			    fps: 30, //default is24\
 			    loop: 10 //Initialize the default number of loops, can be set in the formTo, the default is infinite\
-			    ratio: 2 //The Sprite Mode is only needed. The HD ratio of the image is similar to @2x. The default is 2 and the low-clear mode is 1.\
 			    width: 300, //Note that hidden elements can't get the width, so in special cases you need to specify the width\
-			    height: 300\
+			    height: 300,\
+          _iw: 300, // The width of a single image in a sprite\
+          _ih: 300, // The height of a single image in a sprite\
+          framesCount: 10 // Sprite frame number\
                	}
 
 ## API
@@ -30,10 +32,11 @@ The simplest sequence frame animation plugin of canvas,Manipulating picture anim
   - `cover` Specify the cover frame, default is 0
   - `fps` default is 24
   - `loop` Initialize the default number of loops, can be set in the formTo, the default is infinite
-  - `ratio` The Sprite Mode is only needed. The HD ratio of the image is similar to @2x. The default is 2 and the low-clear mode is 1
   - `width` Note that hidden elements can't get the width, so in special cases you need to specify the width
   - `height` Note that hidden elements can't get the width, so in special cases you need to specify the width
-
+  - `_iw` The width of a single image in a sprite
+  - `_ih` The height of a single image in a sprite
+  - `framesCount` Sprite frame number
 
 ### Install
 
