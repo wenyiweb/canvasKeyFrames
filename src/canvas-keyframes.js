@@ -71,12 +71,23 @@
         if (self.mode === 'array') {
             self.imgsLen = self.imgs.length;
         } else if (self.mode === 'sprite') {
+            console.log(self)
             //计算雪碧图数量
             self.wt = self.imgs.width / self.options._iw;
             self.ht = self.imgs.height / self.options._ih;
+            var spriteArray = [];
+            // 手动生成雪碧图坐标 一维数组
+            for (var j=0;j<self.ht; j++) {
+                for (var i=0; i<self.wt; i++) {
+                    spriteArray.push({
+                        x: self.options._iw * i,
+                        y: self.options._ih * j
+                    })
+                }
+            }
+            self.spriteArray = spriteArray;
             self.imgsLen = self.options.framesCount ? self.options.framesCount : Math.round(2 * self.imgs.width / (self.canvas.width * self.options.ratio))
         }
-
         self.recordTo = self.imgsLen - 1;
         showCover(self);
     }
@@ -108,11 +119,8 @@
                 self.ctx.drawImage(self.imgs[n], 0, 0, self.canvas.width, self.canvas.height);
             }
         } else if (self.mode === 'sprite') {
-            var imgWidth = self.imgs.width / self.imgsLen;
             if (self.options.framesCount) {
-                var wc = self.wt == 1 ? 0 : (Math.floor(n / self.wt) <= 0 ? n : (n / self.wt == 1 ? 0 : (n - self.wt * Math.floor(n / self.wt))));
-                var hc = self.ht == 1 ? 0 : (Math.floor(n / self.ht) <= 0 ? 0 : Math.floor(n / self.ht));
-                self.ctx.drawImage(self.imgs, self.options._iw * wc, self.options._ih * hc, self.options._iw, self.options._iw, 0, 0, self.canvas.width, self.canvas.height);
+                self.ctx.drawImage(self.imgs, self.spriteArray[n].x, self.spriteArray[n].y, self.options._iw, self.options._iw, 0, 0, self.canvas.width, self.canvas.height);
             } else {
                 var imgWidth = self.imgs.width / self.imgsLen;
                 self.ctx.drawImage(self.imgs, imgWidth * n, 0, imgWidth, self.imgs.height, 0, 0, self.canvas.width, self.canvas.height);
@@ -160,7 +168,6 @@
          */
         fromTo: function(from, to, loop, callback) {
             var self = this;
-
             //先清除上次未执行完的动画
             clearInterval(this.timer);
             var keyCount = from;
@@ -180,7 +187,6 @@
                     callback && callback();
                     return;
                 } else { //未达到，继续循环
-
                     //一次循环结束，重置keyCount为from
                     if (keyCount > to) {
                         keyCount = from;
