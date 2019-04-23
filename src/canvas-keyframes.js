@@ -71,7 +71,6 @@
         if (self.mode === 'array') {
             self.imgsLen = self.imgs.length;
         } else if (self.mode === 'sprite') {
-            console.log(self)
             //计算雪碧图数量
             self.wt = self.imgs.width / self.options._iw;
             self.ht = self.imgs.height / self.options._ih;
