@@ -149,14 +149,14 @@
          * 下一帧
          */
         next: function() {
-            var n = (this.count + 1 + this.imgsLen - 1) % (this.imgsLen - 1);
+            var n = this.count + 1 >= this.imgsLen ? 0 : this.count + 1;
             this.goto(n);
         },
         /**
          * 上一帧
          */
         prev: function() {
-            var n = (this.count - 1 + this.imgsLen - 1) % (this.imgsLen - 1);
+            var n = this.count - 1 <= 0 ? this.imgsLen - 1 : this.count - 1;
             this.goto(n);
         },
         /**
