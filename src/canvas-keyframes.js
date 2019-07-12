@@ -287,10 +287,11 @@
 
             var toBack = function toBack() {
                 count++;
+                console.log(count, loop)
                 if (count === loop) {
                     callback && callback();
                 } else {
-                    self.fromTo(from, to, 2, callback);
+                    self.fromTo(from, to, 2, fromBack);
                 }
             };
 
