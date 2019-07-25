@@ -119,7 +119,7 @@
             }
         } else if (self.mode === 'sprite') {
             if (self.options.framesCount) {
-                self.ctx.drawImage(self.imgs, self.spriteArray[n].x, self.spriteArray[n].y, self.options._iw, self.options._iw, 0, 0, self.canvas.width, self.canvas.height);
+                self.ctx.drawImage(self.imgs, self.spriteArray[n].x, self.spriteArray[n].y, self.options._iw, self.options._ih, 0, 0, self.canvas.width, self.canvas.height);
             } else {
                 var imgWidth = self.imgs.width / self.imgsLen;
                 self.ctx.drawImage(self.imgs, imgWidth * n, 0, imgWidth, self.imgs.height, 0, 0, self.canvas.width, self.canvas.height);
