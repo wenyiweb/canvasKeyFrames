@@ -190,7 +190,6 @@
                     if (keyCount > to) {
                         keyCount = from;
                     }
-                    console.log(keyCount)
                     self.goto(keyCount);
                     //帧计数器
                     keyCount++;
@@ -288,7 +287,6 @@
 
             var toBack = function toBack() {
                 count++;
-                console.log(count, loop)
                 if (count === loop) {
                     callback && callback();
                 } else {
