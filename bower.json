@@ -1,0 +1,28 @@
+{
+    "name": "canvas-keyframes",
+    "description": "JavaScript canvas animation",
+    "main": "canvas-keyframes.js",
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/wenyiweb/canvasKeyFrames.git"
+    },
+    "keywords": [
+      "canvas-keyframes",
+      "animation",
+      "javascript",
+      "keyframes",
+      "canvas"
+    ],
+    "authors": [
+      "wenyi <yangwenyi0@126.com>"
+    ],
+    "license": "MIT",
+    "ignore": [
+      "**/.*",
+      "node_modules",
+      "bower_components",
+      "test",
+      "tests"
+    ]
+  }
+  
