@@ -9,7 +9,7 @@ const umd = pkg['umd:main'];
 const date = new Date();
 
 const banner = `/*
- * anime.js v${ pkg.version }
+ * canvas-keyframes.js v${ pkg.version }
  * (c) ${ date.getFullYear() } wenyi
  * Released under the MIT license
  */
