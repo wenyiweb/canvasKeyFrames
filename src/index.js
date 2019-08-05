@@ -1,5 +1,4 @@
 // Defaults
-
 const defaultSettings = {
     el: null,
     mode: 'array',
@@ -145,13 +144,6 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
     createCanvas(instance);
 
     let promise = makePromise(instance);
-    function toggleDirection() {
-        const direction = instance.direction;
-        if (direction !== 'alternate'){
-            instance.direction = direction !== 'normal' ? 'normal' : 'reverse';
-        }
-        instance.reversed = !instance.reversed;
-    }
     function drawImg() {
         let n = instance.process;
         instance.ctx.clearRect(0, 0, instance.canvas.width, instance.canvas.height);
@@ -180,19 +172,28 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
     }
     function countIteration() {
         if (instance.remaining) {
-          instance.remaining--;
+            instance.remaining--;
         }
+    }
+    function resetTime() {
+        now = 0;
+        then = Date.now();
+        delta = 0;
     }
     function setProgress() {
         if (!instance.begin) {
-            console.log(instance.begin);
             instance.begin = true;
             instance.ispause = false;
-            instance.process = instance.start - 1;
+            console.log(instance.process, 'aaa', instance.start)
+            instance.process = instance.direction === 'normal' ? instance.start - 1 : instance.start + 1;
+            console.log('动态',instance.process)
         }
+        console.log('???????????')
         countIteration();
         if (!instance.remaining) {
+            instance.ispause = true;
             if (!instance.completed) {
+              instance.completed = true;
               if (instance.repeat) {
                 instance.repeatDirec = !instance.repeatDirec;
                 if (instance.repeatDirec) {
@@ -208,7 +209,6 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
                     instance.direction = instance.direction === 'alternate' ? 'normal' : 'alternate'
                 }
               }
-              instance.completed = true;
               setCallback('complete');
             }
             if (instance.loop) {
@@ -225,6 +225,11 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
                     instance.process = instance.start;
                 }
             } else {
+                if (instance.direction === 'normal') {
+                    instance.process = instance.process >= instance.end ? instance.start : instance.process + 1
+                } else {
+                    instance.process = instance.process <= 0 ? instance.start : instance.process - 1;
+                }
                 instance.pause();
             }
         } else {
@@ -234,12 +239,14 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
                 instance.process = instance.process <= 0 ? instance.start : instance.process - 1;
             }
         }
+        console.log('打印instance.process=>', instance.process)
     }
     instance.tick = function(t) {
         now = Date.now();
 　　    delta = now - then;
-    　　if (delta > interval) {
+    　　if (delta > interval && !instance.ispause) {
     　　　　then = now - (delta % interval);
+            console.log('enter', instance.process)
             setProgress();
             drawImg();
     　　}
@@ -280,14 +287,20 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
         instance.fromTo(params);
     }
     instance.pause = function() {
+        raf = cancelAnimationFrame(raf);
+        resetTime();
         instance.ispause = true;
         instance.state = 'stop';
+        drawImg();
     }
     instance.stop = function() {
+        raf = cancelAnimationFrame(raf);
+        resetTime();
         instance.begin = false;
         instance.state = 'stop';
         instance.ispause = true;
         instance.process = 0;
+        drawImg();
     }
     instance.play = function() {
         if (!instance.ispause) return;
@@ -299,6 +312,9 @@ function CanvasKeyFrames(el, imgs, mode, params = {}) {
         instance.ctx = null;
         instance.canvas.remove();
         instance.canvas = null;
+        instance.ispause = true;
+        raf = cancelAnimationFrame(raf);
+        resetTime();
         for (let key in instance){
             delete instance[key];
         }
