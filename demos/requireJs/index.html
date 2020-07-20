@@ -36,7 +36,7 @@
                     // 有可能图片加载有快有满慢，所以用角标存
                     imgArr[i-1] = img;
                     if(count==32){
-                        keyFrames(imgArr);
+                        initKeyFrames(imgArr);
                     }
                 }
                 img.onerror = function(){
@@ -45,7 +45,7 @@
             })(i);
         }
         var keyFrames;
-		function keyFrames(imgArr){
+		function initKeyFrames(imgArr){
 			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'array', imgArr, {
 				fps:10,
 				width:375,

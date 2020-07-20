@@ -13,7 +13,7 @@
 	 * options {\
 				cover: 10, //指定封面帧，默认是0 \
 			    fps: 30, //默认是24\
-			    loop: 10 //初始化默认的循环数，在formTo中可以设置，默认是infinite\
+			    loop: 10 //初始化默认的循环次数，可以手动设置大于等于1的整数。在formTo中可以设置。默认是infinite。\
 			    width: 300, //注意，隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度\
 			    height: 300,\
           _iw: 300, // 雪碧图中单个图片的宽度\
@@ -31,7 +31,7 @@
 - `options`
   - `cover` 指定封面帧，默认是0
   - `fps` 默认是24
-  - `loop` 初始化默认的循环数，在formTo中可以设置，默认是infinite
+  - `loop` 初始化默认的循环次数，可以手动设置大于等于1的整数。在formTo中可以设置。默认是infinite。
   - `width` 隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度
   - `height` 隐藏元素是拿不到宽度的，所以特殊情况下需要指定宽度
   - `_iw` 雪碧图中单个图片的宽度
@@ -111,6 +111,9 @@ callback [回调函数]
 
 ## 前端学习交流群，QQ群 : 692337464
 ## ![](https://github.com/wenyiweb/vuejs-fujun/blob/master/static/imgs/qq.png)
+
+## 觉得有用，请我喝杯咖啡吧~
+## ![](/static/wx.jpg)
 
 ## License
 

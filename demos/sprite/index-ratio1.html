@@ -13,7 +13,7 @@
 	<div class="container">
 		
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vConsole/3.2.0/vconsole.min.js"></script>
+	<script src="../libs/vconsole.min.js"></script>
 	<script src="../../dist/canvas-keyframes.min.js"></script>
 	<script>
 		// 初始化vConsole
@@ -21,7 +21,7 @@
 		console.info('欢迎使用 vConsole。可用于展示 console 日志，方便开发、调试。');
 		
 		var keyFrames;
-		function keyFrames(img){
+		function initKeyFrames(img){
 			keyFrames = new CanvasKeyFrames(document.querySelector('.container'), 'sprite', img, {
 				fps:10,
 				width:600,
@@ -37,7 +37,7 @@
 			var img = new Image();
 			img.onload = function(){
 				img.onload = null;
-				keyFrames(img);
+				initKeyFrames(img);
 			}
 			img.onerror = function(){
 			}
